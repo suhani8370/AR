@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Assignment Reminder Planner</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <div>
+            <h1>Assignment Reminder Planner</h1>
+            <p>Manage your assignments and never miss a deadline.</p>
+        </div>
+
+        <button id="notificationBtn">
+        Enable Notifications
+    </button>
+    </header>
+
+    <main>
+
+        <section class="dashboard">
+
+            <div class="stat-card">
+                <h3>Total Assignments</h3>
+                <p id="totalCount">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Upcoming</h3>
+                <p id="upcomingCount">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Overdue</h3>
+                <p id="overdueCount">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Completed</h3>
+                <p id="completedCount">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Completion Rate</h3>
+                <p id="completionRate">0%</p>
+            </div>
+
+        </section>
+
+
+        <section class="panel">
+
+            <h2 id="formHeading">Add New Assignment</h2>
+
+            <form id="assignmentForm">
+
+                <input type="hidden" id="editId">
+
+                <label>Subject Name</label>
+                <input type="text" id="subject" placeholder="Example: Statistics" required>
+
+                <label>Assignment Title</label>
+                <input type="text" id="title" placeholder="Enter assignment title" required>
+
+                <label>Due Date</label>
+                <input type="date" id="dueDate" required>
+
+                <label>Priority</label>
+                <select id="priority">
+                <option value="Low">Low</option>
+                <option value="Medium" selected>Medium</option>
+                <option value="High">High</option>
+            </select>
+
+                <label>Remind me before (days)</label>
+                <input type="number" id="reminderDays" value="1" min="0">
+
+                <div class="form-buttons">
+
+                    <button type="submit" id="saveBtn">
+                    Add Assignment
+                </button>
+
+                    <button type="button" id="cancelBtn" class="secondary" hidden>
+                    Cancel Edit
+                </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+
+        <section class="panel">
+
+            <div class="list-heading">
+
+                <h2>My Assignments</h2>
+
+                <input type="text" id="searchInput" placeholder="Search assignment...">
+
+                <select id="filter">
+        <option value="All">All Assignments</option>
+        <option value="Upcoming">Upcoming</option>
+        <option value="Overdue">Overdue</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Completed">Completed</option>
+    </select>
+
+            </div>
+            <div id="taskList">
+                <p>Loading assignments...</p>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+
+</body>
+
+</html>

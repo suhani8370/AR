@@ -1,0 +1,7 @@
+venv/
+packages/
+wheels/
+__pycache__/
+*.pyc
+assignments.db
+.env
